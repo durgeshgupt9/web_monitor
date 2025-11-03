@@ -1,0 +1,12 @@
+<odoo>
+  <record id="ir_cron_check_websites" model="ir.cron">
+    <field name="name">Check Website Monitors</field>
+    <field name="model_id" ref="model_website_monitor"/>
+    <field name="state">code</field>
+    <field name="code">model.check_all_websites()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">minutes</field>
+    <field name="numbercall">-1</field>
+    <field name="active">True</field>
+  </record>
+</odoo>
