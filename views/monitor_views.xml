@@ -1,0 +1,54 @@
+<odoo>
+  <record id="view_website_monitor_form" model="ir.ui.view">
+    <field name="name">website.monitor.form</field>
+    <field name="model">website.monitor</field>
+    <field name="arch" type="xml">
+      <form string="Website Monitor">
+        <header>
+          <!-- Status displayed in header with statusbar widget -->
+          <field name="status" widget="statusbar"/>
+          <!-- Manual check button -->
+          <button name="action_check_status_now"
+                  type="object"
+                  string="Check Now"
+                  class="btn-primary"/>
+        </header>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="url"/>
+            <field name="port"/>
+            <field name="last_checked" readonly="1"/>
+            <field name="notify_email"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_website_monitor_tree" model="ir.ui.view">
+    <field name="name">website.monitor.tree</field>
+    <field name="model">website.monitor</field>
+    <field name="arch" type="xml">
+      <tree string="Website Monitors">
+        <field name="name"/>
+        <field name="url"/>
+        <field name="port"/>
+        <field name="status"/>
+        <field name="last_checked"/>
+        <field name="notify_email"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_website_monitor" model="ir.actions.act_window">
+    <field name="name">Website Monitors</field>
+    <field name="res_model">website.monitor</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help">("Monitor website and port status.")</field>
+  </record>
+
+  <menuitem id="menu_website_monitor_root" name="Website Monitor"/>
+  <menuitem id="menu_website_monitor" name="Monitors" parent="menu_website_monitor_root"/>
+  <menuitem id="menu_website_monitor_items" name="Monitor List" parent="menu_website_monitor" action="action_website_monitor"/>
+</odoo>
